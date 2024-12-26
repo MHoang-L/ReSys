@@ -52,10 +52,10 @@ Run prediction using saved checkpoint:
 ```
 python submission.py `
 --pretrained_model_path ./saved_ckpt `
---pretreained_model unilm `
+--pretreained_model others `
 --root_data_dir ./data/speedy_data/ `
 --num_hidden_layers 8 `
---load_ckpt_name ./saved_ckpt/path/to/model `
+--load_ckpt_name ./saved_ckpt/saved_model.pt `
 --batch_size 256 
 ```
 It will creates a zip file:`predciton.zip`, which can be submitted to the leaderboard of MIND directly.  
