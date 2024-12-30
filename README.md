@@ -15,37 +15,26 @@
 |  28  | martinmarshall|    3    |      12/26/24      | 0.7042  | 0.3561 | 0.3901  | 0.4462  |
 
 ## Environment
-Please follow the setup steps bellow:
 1. Install [Anaconda](https://www.anaconda.com/products/distribution)
 2. Create a virtual environment by using conda command 
 ```
-$> conda env create -n deepnewsrec python=3.11.3
+$> conda env create -n deepnewsrec -f conda.yaml
 ```
 3. Activate the virtual environment we created
 ```commandline
 $> conda activate deepnewsrec
-```
-4. Install mlflow
-```commandline
-(deepnewsrec)$> pip install mlflow==1.29.0
 ```
 
 ## How to run the code
 - Try a toy example with `demo` dataset 
 ```commandline 
 $> mlflow run -e train --env-manager=local --experiment-name individual_runs -P mind_type=large -P epochs=1 -P batch_size=32 .
-mlflow run -e train --no-conda --experiment-name individual_runs -P mind_type=large -P model_type=nrms -P epochs=10 -P batch_size=32 .
+mlflow run -e train --no-conda --experiment-name individual_runs -P mind_type=demo -P model_type=nrms -P epochs=10 -P batch_size=32 .
 ```
-or you can use git uri
-```commandline
-$> mlflow run -e train --experiment-name individual_runs -P mind_type=demo -P epochs=1 git@github.com:hongjunyan/pytorch-news-recommendation.git 
-```
-
 - Run hyperparameter tuning
 ```commandline
 $> mlflow run -e tune_with_ray --experiment-name tune_hyperparams -P mind_type=demo -P epochs=1 .
 ```
-For training a formal model, please use `mind_type=large`.
 
 ## Prediction
 Run prediction using saved checkpoint:
